@@ -1,0 +1,44 @@
+.o_hp_restoration_map .o_content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.o_hp_map_view {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.o_hp_map_note {
+    padding: 0.35rem 0.75rem;
+}
+
+.o_hp_map_canvas {
+    flex: 1 1 auto;
+    min-height: 420px;
+}
+
+.o_hp_map_canvas .leaflet-container {
+    height: 100%;
+    width: 100%;
+    font: inherit;
+}
+
+.leaflet-div-icon.hp-map-pin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1f6b45;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.hp-map-popup-name {
+    font-weight: 700;
+}

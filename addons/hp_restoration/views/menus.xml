@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_hp_root" name="Restoration Sites" sequence="50"/>
+    <menuitem
+        id="menu_hp_site"
+        name="Sites"
+        parent="menu_hp_root"
+        action="action_restoration_site"
+        sequence="10"/>
+    <menuitem
+        id="menu_hp_config"
+        name="Configuration"
+        parent="menu_hp_root"
+        sequence="90"/>
+    <menuitem
+        id="menu_hp_stage"
+        name="Stages"
+        parent="menu_hp_config"
+        action="action_restoration_stage"
+        sequence="10"/>
+    <menuitem
+        id="menu_hp_type"
+        name="Site types"
+        parent="menu_hp_config"
+        action="action_restoration_type"
+        sequence="20"/>
+</odoo>

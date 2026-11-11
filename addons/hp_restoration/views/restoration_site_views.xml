@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_restoration_site_list" model="ir.ui.view">
+        <field name="name">hp.restoration.site.list</field>
+        <field name="model">hp.restoration.site</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code" optional="show"/>
+                <field name="name" optional="show"/>
+                <field name="city_id" optional="show"/>
+                <field name="state_id" optional="show"/>
+                <field name="type_id" optional="show"/>
+                <field name="stage_id" optional="show"/>
+                <field name="employee_id" optional="hide"/>
+                <field name="partner_id" optional="hide"/>
+                <field name="contractor_id" optional="hide"/>
+                <field name="related_site_id" optional="hide"/>
+                <field name="area_ha" optional="show"/>
+                <field name="area_for_sale_ha" optional="hide"/>
+                <field name="area_sold_ha" optional="hide"/>
+                <field name="area_remaining_ha" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_restoration_site_form" model="ir.ui.view">
+        <field name="name">hp.restoration.site.form</field>
+        <field name="model">hp.restoration.site</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="code" placeholder="HP-001"/>
+                        </h1>
+                        <h2>
+                            <field name="name" placeholder="Site name"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="type_id"/>
+                            <field name="employee_id"/>
+                            <field name="related_site_id" domain="[('id', '!=', id)]"/>
+                            <field name="city_id" context="{'default_country_id': %(base.fi)s}"/>
+                            <field name="state_id"/>
+                        </group>
+                        <group>
+                            <field name="area_ha"/>
+                            <field name="latitude"/>
+                            <field name="longitude"/>
+                            <field name="map_url" widget="url"/>
+                            <field name="property_identifier_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group string="Sales area">
+                        <field name="area_for_sale_ha"/>
+                        <field name="area_sold_ha"/>
+                        <field name="area_remaining_ha"/>
+                    </group>
+                    <notebook>
+                        <page string="Description" name="description">
+                            <field name="description"/>
+                        </page>
+                        <page string="Permits and documents" name="permits">
+                            <field name="permit_html"/>
+                        </page>
+                        <page string="Landowner" name="landowner">
+                            <group>
+                                <field name="partner_id"/>
+                            </group>
+                            <field name="landowner_html"/>
+                        </page>
+                        <page string="Contractor" name="contractor">
+                            <group>
+                                <field name="contractor_id"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_restoration_site_kanban" model="ir.ui.view">
+        <field name="name">hp.restoration.site.kanban</field>
+        <field name="model">hp.restoration.site</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="stage_id" class="o_kanban_small_column" quick_create="false">
+                <templates>
+                    <t t-name="card">
+                        <field name="code" class="fw-bold"/>
+                        <field name="name"/>
+                        <field name="city_id"/>
+                        <footer>
+                            <field name="area_ha"/>
+                            <field name="employee_id" widget="many2one_avatar_employee" class="ms-auto"/>
+                        </footer>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_restoration_site_map" model="ir.ui.view">
+        <field name="name">hp.restoration.site.map</field>
+        <field name="model">hp.restoration.site</field>
+        <field name="arch" type="xml">
+            <map latitude="latitude" longitude="longitude">
+                <field name="latitude"/>
+                <field name="longitude"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="city_id"/>
+                <field name="stage_id"/>
+                <field name="area_ha"/>
+            </map>
+        </field>
+    </record>
+
+    <record id="view_restoration_site_search" model="ir.ui.view">
+        <field name="name">hp.restoration.site.search</field>
+        <field name="model">hp.restoration.site</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="city_id"/>
+                <field name="partner_id"/>
+                <field name="contractor_id"/>
+                <filter name="filter_stage" string="Stage" context="{'group_by': 'stage_id'}"/>
+                <filter name="filter_type" string="Site type" context="{'group_by': 'type_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_restoration_site" model="ir.actions.act_window">
+        <field name="name">Restoration Sites</field>
+        <field name="res_model">hp.restoration.site</field>
+        <field name="view_mode">list,kanban,map,form</field>
+    </record>
+</odoo>

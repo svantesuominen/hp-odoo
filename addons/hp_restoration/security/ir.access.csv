@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_hp_restoration_site,hp.restoration.site,hp.restoration.site,base.group_user,crud,
+access_hp_restoration_stage,hp.restoration.stage,hp.restoration.stage,base.group_user,crud,
+access_hp_restoration_type,hp.restoration.type,hp.restoration.type,base.group_user,crud,
+access_hp_property_identifier,hp.property.identifier,hp.property.identifier,base.group_user,crud,

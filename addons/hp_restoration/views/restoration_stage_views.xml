@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_restoration_stage_list" model="ir.ui.view">
+        <field name="name">hp.restoration.stage.list</field>
+        <field name="model">hp.restoration.stage</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_restoration_stage" model="ir.actions.act_window">
+        <field name="name">Stages</field>
+        <field name="res_model">hp.restoration.stage</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

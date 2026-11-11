@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="stage_applicant_not_answered" model="hp.restoration.stage">
+        <field name="name">1 Applicant not answered</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="stage_in_review" model="hp.restoration.stage">
+        <field name="name">2 In Hiilipörssi review</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="stage_waiting" model="hp.restoration.stage">
+        <field name="name">Under review or waiting</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="stage_offer_with_landowner" model="hp.restoration.stage">
+        <field name="name">3 Offer with the landowner</field>
+        <field name="sequence">40</field>
+    </record>
+    <record id="stage_offer_accepted" model="hp.restoration.stage">
+        <field name="name">4 Offer accepted by the landowner</field>
+        <field name="sequence">50</field>
+    </record>
+    <record id="stage_restoration_in_progress" model="hp.restoration.stage">
+        <field name="name">6 Restoration in progress</field>
+        <field name="sequence">60</field>
+    </record>
+    <record id="stage_restoration_complete" model="hp.restoration.stage">
+        <field name="name">7 Restoration complete</field>
+        <field name="sequence">70</field>
+    </record>
+    <record id="stage_sold_and_paid" model="hp.restoration.stage">
+        <field name="name">8 Complete, sold and paid</field>
+        <field name="sequence">80</field>
+    </record>
+    <record id="stage_rejected" model="hp.restoration.stage">
+        <field name="name">Rejected</field>
+        <field name="sequence">90</field>
+    </record>
+</odoo>
