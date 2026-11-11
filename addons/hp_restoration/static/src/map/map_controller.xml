@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="hp_restoration.MapView">
+        <div t-attf-class="{{this.props.className}} o_hp_restoration_map" t-ref="this.rootRef">
+            <Layout display="this.props.display">
+                <t t-set-slot="control-panel-additional-actions">
+                    <CogMenu/>
+                </t>
+                <t t-set-slot="control-panel-actions">
+                    <SearchBar toggler="this.searchBarToggler"/>
+                </t>
+                <t t-set-slot="control-panel-navigation-additional">
+                    <t t-component="this.searchBarToggler.component" t-props="this.searchBarToggler.props"/>
+                </t>
+                <div class="o_hp_map_view">
+                    <div class="o_hp_map_note" t-out="this.note"/>
+                    <div class="o_hp_map_canvas" t-ref="this.mapRef"/>
+                </div>
+            </Layout>
+        </div>
+    </t>
+</templates>
