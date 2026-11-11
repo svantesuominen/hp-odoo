@@ -49,6 +49,8 @@ docker compose restart odoo
 
 Module names use the `hp_` prefix. Extend core views with inheritance; do not edit core.
 
+On a new database, install `hp_base`. It installs the shared Community apps and the Restoration Site register (`hp_restoration`).
+
 After changing XML views or data files, upgrade the module:
 
 ```bash
