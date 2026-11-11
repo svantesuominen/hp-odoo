@@ -1,0 +1,16 @@
+---
+description: Project scope for the Hiilipörssi Odoo 20 Community prototype
+alwaysApply: true
+---
+
+# Project scope
+
+- This repo is the Hiilipörssi Odoo 20 Community prototype. Odoo version: 20.0.
+- Odoo core comes from the official Docker image `odoo:20.0`. Never clone, fork, or copy Odoo core into this repo.
+- Only custom addons live in `addons/`. Technical module names use the `hp_` prefix.
+- The local environment is defined in `compose.yaml`. Use it; do not set up a separate Odoo install (venv, source checkout).
+- Enterprise is not used yet. Never copy Enterprise code into this repo, and do not reference Enterprise modules in any manifest.
+- Production hosting is not decided. Do not add deployment config without asking.
+- Keep README.md and these rules in English.
+
+Example: a new feature goes in `addons/hp_feature/`, not in a patched copy of Odoo core.

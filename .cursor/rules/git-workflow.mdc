@@ -1,0 +1,37 @@
+---
+description: Git and GitHub workflow for the Odoo prototype
+alwaysApply: true
+---
+
+# Git workflow
+
+Branches:
+
+- `main` always installs and starts cleanly.
+- Work on `feature/short-name` branches. Never commit directly to `main`.
+
+Commits:
+
+- Commit locally when a slice installs and upgrades cleanly in your own local database.
+- Write commit messages in English. Put the reason first, then what changed.
+
+  ```
+  Add partner reference field to contact form
+
+  Sales needs the reference from Hiilipörssi's ERP on contacts.
+  Adds hp_reference and extends res.partner form view.
+  ```
+
+Pushing:
+
+- Push your feature branch at least at the end of each working day.
+- Also push whenever the other developer needs to test your changes.
+- Open a pull request into `main`. Do not merge without review.
+
+Never commit:
+
+- Database dumps, exports, or the Docker filestore (`*.sql`, `*.dump`)
+- `.env` files or any credentials
+- Odoo core code
+
+If `.gitignore` does not cover a file that should stay local, add it to `.gitignore` rather than committing it.

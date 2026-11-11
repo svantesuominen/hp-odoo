@@ -1,0 +1,38 @@
+---
+description: How to run, update and upgrade the local Odoo 20 Docker environment
+alwaysApply: true
+---
+
+# Running local Odoo
+
+Start, stop, logs:
+
+```bash
+docker compose up -d
+docker compose stop
+docker compose logs -f odoo
+```
+
+- Web UI: http://localhost:8069
+- Database manager: http://localhost:8069/web/database/manager
+- Local database name: `hp`. Create it without demo data.
+- Master password is the Odoo default `admin`. It is local only.
+
+Update the image within Odoo 20 (new nightly build):
+
+```bash
+docker compose pull && docker compose up -d
+```
+
+Install or upgrade custom modules, then restart Odoo:
+
+```bash
+docker compose run --rm odoo odoo -d hp -i hp_module --stop-after-init
+docker compose run --rm odoo odoo -d hp -u hp_module --stop-after-init
+docker compose restart odoo
+```
+
+- Use `-i` the first time a module is installed, `-u` after changing XML views, data files, or models.
+- Python changes reload automatically in dev mode, but restart after install or upgrade.
+- Do not run a local Odoo from source or a Python venv.
+- Do not run `docker compose down -v` unless the user asks for a clean reset. It deletes all local data.

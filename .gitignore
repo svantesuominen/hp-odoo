@@ -1,0 +1,14 @@
+# Local secrets and environment files
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Database dumps and exports: keep them out of git
+*.sql
+*.dump

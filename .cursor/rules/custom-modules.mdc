@@ -1,0 +1,40 @@
+---
+description: Conventions for custom Odoo modules in addons/
+globs: addons/**
+alwaysApply: false
+---
+
+# Custom Odoo modules
+
+Create a new module with the Odoo scaffold, not by hand:
+
+```bash
+docker compose run --rm odoo odoo scaffold hp_example /mnt/extra-addons
+```
+
+Conventions:
+
+- Module technical name: `hp_` prefix, lowercase, underscores.
+- Every module has `__manifest__.py` with `name`, `version`, `depends`, `license`, and `data` listing its XML files.
+- Depend only on Odoo Community modules in `depends`.
+- Extend core views with `inherit_id` and `xpath`. Never edit core files.
+- Use `_()` around user-facing strings.
+- Give access rights in `security/ir.model.access.csv`. Add record rules when needed.
+- Add tests under `tests/` using Odoo's test framework (`TransactionCase`).
+
+Example: extend the partner form.
+
+```xml
+<record id="view_partner_form_hp" model="ir.ui.view">
+    <field name="name">res.partner.form.hp</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='vat']" position="after">
+            <field name="hp_reference"/>
+        </xpath>
+    </field>
+</record>
+```
+
+After changing a module, follow the upgrade steps in `local-odoo.mdc`.
